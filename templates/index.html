@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+    <script type="text/javascript" src="{{ url_for('static', filename='script.js') }}"></script>
+    <link rel="stylesheet" href="/Checkerboard/static/style.css">
+    <title>Checkerboard!</title>
+</head>
+<body>
+    <div class="header" style="color: {{color1}};">
+        <h1>Checkerboard!</h1>
+    </div>
+    <div class="main">                                  <!-- container so I could center the board -->
+        <div class="container">                         <!-- the board itself -->
+            {% for i in range(0,num1) %}                <!-- num1 represents the vertical rows, num2 represents horizontal. This loop creates as many rows as num1 -->
+                {% if i%2==0 %}                         <!-- this if decides which color the squares are going to start on, the top left square will always start red (color2) -->
+                <div class="row">
+                    {% for i in range(0,num2) %}        <!-- this loop creates the pattern of colors, starting at 0 is color2 (red), 1 is color1 (black), 2 is color1, ... -->
+                        {% if i%2==0 %}
+                            <div class="col-xs-auto box box1" style="background-color: {{color2}};"></div>
+                        {% elif i%2 != 0 %}
+                            <div class="col-xs-auto box box2" style="background-color: {{color1}};"></div>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+                {% elif i%2 != 0 %}                     <!-- when i is an odd number, flips the pattern and starts with color1 instead of color2 -->
+                <div class="row">
+                    {% for i in range(0,num2) %}
+                    {% if i%2==0 %}
+                            <div class="col-xs-auto box box1" style="background-color: {{color1}};"></div>
+                        {% elif i%2 != 0 %}
+                            <div class="col-xs-auto box box2" style="background-color: {{color2}};"></div>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+</body>
+</html>

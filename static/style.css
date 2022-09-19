@@ -1,0 +1,35 @@
+.main {
+    display: flex;
+    justify-content: center;
+}
+
+.header {
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+}
+
+.container {
+    justify-content: center;
+    width: fit-content;
+}
+
+.row {
+    flex-wrap: nowrap;
+    min-width: fit-content;
+}
+
+.box {
+    width: 50px;
+    height: 50px;
+    margin: 0;
+    padding: 0;
+}
+
+.box1 {
+    background-color: red;
+}
+
+.box2 {
+    background-color: black;
+}
